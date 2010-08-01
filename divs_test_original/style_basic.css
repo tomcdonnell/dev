@@ -1,0 +1,74 @@
+/**************************************************************************************************\
+*
+* Filename: "style_basic.css"
+*
+* Purpose: Test for layout of Bergamot.
+*
+* Author: Tom McDonnell 2007.
+*
+\**************************************************************************************************/
+
+*
+{
+   padding: 0;
+   margin: 0;
+}
+
+/* Wrappers. **************************************************************************************/
+
+div#mainWrapper, div#tWrapper, div#tlWrapper, div #trWrapper, div#bWrapper
+{
+   border-style: solid;
+   border-width: 1px;
+}
+
+div#tlWrapper, div#trWrapper
+{
+   width: 300px;
+   height: 300px;
+}
+
+div#tlWrapper
+{
+   float: left;
+}
+
+div#trWrapper
+{
+   float: left;
+}
+
+/* Dividers. **************************************************************************************/
+
+div#hDivider, div#vDivider
+{
+   background: black;
+   border-style: solid;
+   border-width: 1px;
+}
+
+div#vDivider
+{
+   float: left;
+   width: 10px;
+   height: 300px;
+}
+
+div#hDivider
+{
+   clear: both;
+   height: 10px;
+}
+
+div#vDivider:hover
+{
+   cursor: e-resize;
+}
+
+div#hDivider:hover
+{
+   clear: both;
+   cursor: n-resize;
+}
+
+/*******************************************END*OF*FILE********************************************/

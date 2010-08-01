@@ -1,0 +1,85 @@
+/**************************************************************************************************\
+*
+* wim: ts=3 sw=3 et wrap co=100 go-=b
+*
+* Filename: "style.css"
+*
+* Project: mortgagesavers.com.au
+*
+* Purpose:  Stylesheet.
+*
+* Author: Tom McDonnell 2010-02-28
+*
+\**************************************************************************************************/
+
+div.top
+{
+   background-color: #65a7f8;
+}
+
+h1
+{
+   font-family: sans-serif;
+   color: yellow;
+}
+
+div.center, table
+{
+   color: white;
+   width: 500px;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+div.center
+{
+   padding-top: 120px;
+   text-align: center;
+   padding-bottom: 5px;
+}
+
+table
+{
+   color: black;
+   padding-top: 10px;
+   padding-bottom: 150px;
+}
+
+table th.validationMessage
+{
+   text-align: center;
+   background-color: red;
+   color: white;
+}
+
+div.bottom
+{
+   background-color: #29b91a;
+}
+
+p.validationMessage
+{
+   color: red;
+}
+
+table th
+{
+   text-align: left;
+}
+
+table th.submit
+{
+   text-align: center;
+}
+
+table td
+{
+   text-align: right;
+}
+
+input
+{
+   width: 60px;
+}
+
+/*******************************************END*OF*FILE********************************************/

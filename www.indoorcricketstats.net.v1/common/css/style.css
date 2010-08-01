@@ -1,0 +1,149 @@
+/**************************************************************************************************\
+*
+* Filename: "icdb_style.css"
+*
+* Project: IndoorCricketStats.net
+*
+* Purpose:  Styles for "Indoor Cricket Database" website.
+*
+* Author: Tom McDonnell 2006
+*
+\**************************************************************************************************/
+
+/* NOTE: No short comments ('//') allowed in CSS files. */
+
+/*
+ * NOTE: Web safe colours.
+ *       * Almost all browser/display combinations are cabable of displaying the 216 colour web safe
+ *         palette.  This consists of all combinations of 00, 33, 66, 99, cc, ff in RGB values
+ *         eg. #0033cc etc. (total colours = 6 ^ 3 = 216)
+ *       * Most modern browser/display combinations are capable of displaying all combinations of
+ *         two digit hexadecimal RGB values.  eg. #59abcf (total colours = 256 ^ 3 = 16777216)
+ *       * In between the above two extremes is the palette consisting of all combinations of RGB
+ *         values in which the two hex. digits are the same for each of R, G, and B.
+ *         eg 00, 11, 22, 33, ...etc. (total colours = 16 ^ 3 = 4096)
+ *
+ *       I have elected not to restrict the palette for this style sheet.
+ *       If users experience problems then I may compromise colour by using the 4096 colour palette.
+ */
+
+/* General classes (applicable to all HTML elements by class="something borders__RB" for example. */
+
+.borders____ {border-width: 0px;}
+.borders___B {border-width: 0px; border-bottom-width: 1px;}
+.borders__R_ {border-width: 0px; border-right-width: 1px;}
+.borders__RB {border-width: 0px; border-right-width: 1px; border-bottom-width: 1px;}
+.borders_L__ {border-width: 0px; border-left-width: 1px;}
+.borders_L_B {border-width: 0px; border-left-width: 1px; border-bottom-width: 1px;} 
+.borders_LR_ {border-width: 0px; border-left-width: 1px; border-right-width: 1px;}
+
+/* .borders_LRB {border-width: 1px; border-top-width: 0px;} Causes redefinition warning. */ 
+.borders_LRB
+{
+   border-top-width: 0px;
+   border-left-width: 1px;
+   border-right-width: 1px;
+   border-bottom-width: 1px;
+}
+
+/* .bordersT___ {border-width: 0px; border-top-width: 1px;} Causes redefinition warning. */
+.borders_LRB
+{
+   border-top-width: 1px;
+   border-left-width: 0px;
+   border-right-width: 0px;
+   border-bottom-width: 0px;
+}
+
+.bordersT__B {border-width: 1px; border-left-width: 0px; border-right-width: 0px;}
+.bordersT_R_ {border-width: 1px; border-left-width: 0px; border-bottom-width: 0px;}
+.bordersT_RB {border-width: 1px; border-left-width: 0px;}
+.bordersTL__ {border-width: 1px; border-right-width: 0px; border-bottom-width: 0px;}
+.bordersTL_B {border-width: 1px; border-right-width: 0px;} 
+.bordersTLR_ {border-width: 1px; border-bottom-width: 0px;}
+.bordersTLRB {border-width: 1px;}
+
+.alignL {text-align: left;}
+.alignC {text-align: center;}
+.alignR {text-align: right;}
+
+.nowrap {white-space: nowrap;}
+
+.paddinglr {padding-left: 2px; padding-right: 2px;}
+
+/* Classes for specific HTML elements *************************************************************/
+
+body
+{
+   font-family: sans-serif;
+   text-align: center;
+   margin: 0px;
+}
+
+input {text-align: center;}
+
+select {text-align: center;}
+
+table
+{
+   text-align: center;
+   border-style: solid;
+   border-width: 0px;
+   border-collapse: separate;
+   border-spacing: 0px;
+   margin-left: auto;
+   margin-right: auto;
+   vertical-align: middle;
+   cursor: default;
+}
+
+table.backh2 {background: #408000; color: white; border-spacing: 5px;}
+
+th
+{
+   background: #50a000; /* Same as h3 below. */
+   color: white;
+   overflow: hidden;
+   border-style: solid;
+   border-color: white;
+   border-width: 0px;
+}
+
+/*
+ * NOTE: color: white; should not need to be specified in children of table,
+ *       but where background is specified in children, absence of color causes warning.
+ *       RULE: Whenever background is specified, must specify color also and vice-versa.
+ */
+
+th.colorTd {background: #0069d2; color: white;} /* th element with background of td element. */
+
+/* Greens defined by RGB relationship: R = a, G = 2a, B = 0. */
+th.h1  {background: #306000; color: white; padding-top: 3px; padding-bottom: 3px;} /* Dark  green */
+th.h2  {background: #408000; color: white; padding-top: 2px; padding-bottom: 2px;} /* ....  green */
+th.h3d {background: #489000; color: white; padding-top: 1px; padding-bottom: 1px;} /* ....  green */
+th.h3  {background: #50a000; color: white; padding-top: 1px; padding-bottom: 1px;} /* ....  green */
+th.h3l {background: #58b000; color: white; padding-top: 1px; padding-bottom: 1px;} /* Light green */
+
+td
+{
+   background: #0069d2; /* Middle of td [dd, ll] range below. */
+   color: white;
+   overflow: hidden;
+   border-style: solid;
+   border-color: white;
+   border-width: 0px;
+   padding: 0px;
+}
+
+td.uline {text-decoration: underline;}
+td.nopadding {padding: 0px;}
+
+/* Sky blue defined by RGB relationship: R = 0, G = a, B = 2a. */
+td.dd {background: #0059b2; color: white;}
+td.d  {background: #0061c2; color: white;} /* Dark   sky blue (ideal #0064c8). */
+td.dl {background: #0069d2; color: white;} /* Medium sky blue (ideal #0069d8). */
+td.ld {background: #0069d2; color: white;} /* Medium sky blue (ideal #0069d8). */
+td.l  {background: #0071e2; color: white;} /* Light  sky blue (ideal #0074e8). */
+td.ll {background: #0079f2; color: white;}
+
+/*******************************************END*OF*FILE********************************************/

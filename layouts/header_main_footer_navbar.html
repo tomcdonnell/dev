@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC
+ "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns='http://www.w3.org/1999/xhtml'>
+ <head>
+  <style type='text/css'>
+   body,
+   div#layoutHeader,
+   div#layoutNavBar,
+   div#layoutMain,
+   div#layoutFooter
+   {
+      margin: 0;
+      padding: 0;
+   }
+  </style>
+  <script type='text/javascript' src='../../common/js/3rdParty/jquery/1.4/jquery_minified.js'></script>
+  <script type='text/javascript'>
+   $(document).ready
+   (
+      /*
+       *
+       */
+      function onLoadDocument(e)
+      {
+         window.loadFirebugConsole();
+         $(window).resize(onResizeWindow);
+         $(window).trigger('resize');
+      }
+   );
+
+   /*
+    *
+    */
+   function onResizeWindow(e)
+   {
+      var leftoverWidthInPixels  = $(window).width() - $('#layoutNavBar').outerWidth();
+      var leftoverHeightInPixels =
+      (
+         $(window).height()
+         -  $('#layoutHeader').outerHeight() - $('#layoutFooter').outerHeight()
+         - ($('#layoutMain'  ).outerHeight() - $('#layoutMain'  ).innerHeight())
+      );
+
+      $('#layoutMain'  ).css('height', String(leftoverHeightInPixels) + 'px');
+      $('#layoutNavBar').css('height', String(leftoverHeightInPixels) + 'px');
+      $('#layoutMain'  ).css('width' , String(leftoverWidthInPixels ) + 'px');
+   }
+  </script>
+  <title>Title</title>
+ </head>
+ <body>
+  <div id='layoutHeader' style='height: 100px; background-color: red;'>Header</div>
+  <div id='layoutNavBar' style='width: 100px; float: left; background-color: green;'>NavBar</div>
+  <div id='layoutMain' style='float: right; background-color: blue;'>Main</div>
+  <div id='layoutClearFloats' style='clear: both;'></div>
+  <div id='layoutFooter' style='height: 50px; background-color: yellow;'>Footer</div>
+ </body>
+</html>

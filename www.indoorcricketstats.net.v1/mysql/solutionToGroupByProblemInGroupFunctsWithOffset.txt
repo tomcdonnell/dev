@@ -1,0 +1,189 @@
+// normal query example ////////////////////////////////////////////////////////////////////////////
+
+// table query
+select `first_name`, `last_name`,
+       `match_date`, `opp_team_name`, `batting_pos`, `wickets_lost`, `runs_scored`
+from `view_innings`
+where `team_id` = 1
+order by `runs_scored` desc, `match_date` asc, `batting_pos` asc
+limit 20 offset 10;
+
+// first rank query (legal)
+select count(*) from
+(
+   select distinct `runs_scored`
+   from `view_innings`
+   where `team_id` = 1 and `runs_scored` > 30
+   order by `runs_scored` desc, `match_date` asc, `batting_pos` asc
+) as tab1;
+
+// first rank query 2nd version (legal)
+select count(*) from
+(
+   select * from
+   (
+      select distinct `runs_scored` as rs
+      from `view_innings`
+      where `team_id` = 1
+      order by rs desc, `match_date` asc, `batting_pos` asc
+   ) as tab1
+   where rs > 30
+) as tab2;
+
+// generally /////////////////////////////////////////////////////////////////
+$selectExp       = "`first_name`, `last_name`,
+                    `match_date`, `opp_team_name`, `batting_pos`, `wickets_lost`"
+$selectRankAsExp = "`runs_scored` as `rs`"
+$fromExp         = "`view_innings`"
+$whereExp        = "`team_id` = 1"
+$groupByExp      = ""
+$orderByExp      = "`rs` desc, `match_date` asc, `batting_pos` asc"
+$rankExp         = "`rs`"
+
+// table query
+select   $selectExp . ', ' . $selectRankAsExp
+from     $fromExp
+where    $whereExp
+group by $groupByExp
+order by $orderByExp
+limit 20 offset 10;
+
+select count(*) from
+(
+   select * from
+   (
+      select distinct $rankAsExp
+      from     $fromExp
+      where    $whereExp
+      group by $groupByExp
+      order by $orderByExp
+   ) as tab1
+   where $rankExp > 30
+) as tab2;
+
+// GROUP query example /////////////////////////////////////////////////////////////////////////////
+
+// table query
+select `first_name`, `last_name`,
+       count(distinct `match_id`), count(*), sum(`runs_scored`) as srs
+from `view_innings`
+where `team_id` = 1
+group by `player_id`
+order by srs desc
+limit 20 offset 10;
+
+// first rank query (illegal)
+select count(*) from
+(
+   select distinct sum(`runs_scored`) as srs
+   from `view_innings`
+   where `team_id` = 1 and sms > 233
+   group by `player_id`
+   order by srs desc
+) as tab1;
+
+// first rank query (legal)
+select count(*) from
+(
+   select * from
+   (
+      select distinct sum(`runs_scored`) as srs
+      from `view_innings`
+      where `team_id` = 1
+      group by `player_id`
+      order by srs desc
+   ) as tab1
+   where srs > 233
+) as tab2;
+
+// generally /////////////////////////////////////////////////////////////////
+$selectExp       = "`first_name`, `last_name`,
+                    count(distinct `match_id`), count(*)"
+$selectRankAsExp = "sum(`runs_scored`) as srs"
+$fromExp         = "`view_innings`"
+$whereExp        = "`team_id` = 1"
+$groupByExp      = `player_id`
+$orderByExp      = "`srs` desc"
+$rankExp         = "`srs`"
+
+// table query
+select   $selectExp
+from     $fromExp
+where    $whereExp
+group by $groupByExp
+order by $orderByExp
+limit 20 offset 10;
+
+// first rank query
+select count(*) from
+(
+   select * from
+   (
+      select distinct $selectRankAsExp
+      from     $fromExp
+      where    $whereExp
+      group by $groupByExp
+      order by $orderByExp
+   ) as tab1
+   where $rankExp > 233
+) as tab2;
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// old query
+
+          $MySQLfirstRankQuery
+            =  "select count(*) from\n"
+             . "(\n"
+             . '   select distinct ' . $_SESSION['MySQLrankExp']. "\n"
+             . '   from '     . $_SESSION['MySQLfromExp' ] . "\n"
+             . '   where '    . $_SESSION['MySQLwhereExp']
+             . ' and ' . $_SESSION['MySQLrankExp'];
+          switch ($_SESSION['MySQLrankAscOrDesc'])
+          {
+           case 'Asc' : $MySQLfirstRankQuery .= ' < '; break;
+           case 'Desc': $MySQLfirstRankQuery .= ' > '; break;
+           default: error(  "'Asc' or 'Desc' expected in displayMySQLtable().  "
+                          . "'" . $_SESSION['MySQLrankAscOrDesc'] . "' encountered instead.");
+          }
+          $MySQLfirstRankQuery
+            .= $firstValueOfRankingVar . "\n";
+          if ($_SESSION['MySQLgroupByExp'] != '')
+            $MySQLfirstRankQuery .= '   group by ' . $_SESSION['MySQLgroupByExp'] . "\n";
+          if ($_SESSION['MySQLorderByExp'] != '')
+            $MySQLfirstRankQuery .= '   order by ' . $_SESSION['MySQLorderByExp'] . "\n";
+          $MySQLfirstRankQuery
+            .= ") as tab1\n";
+
+// unsuccessful query
+select count(*)
+from
+(
+   select *
+   from
+   (
+      select distinct avg(`runs_scored`) as `ars`
+      from `view_innings`
+      where `team_id` = 1
+      group by `player_id`
+      order by `ars` desc
+   ) as tab1
+   where `ars` > 12.6667
+) as tab2;
+
+// this is the problematic part
+select distinct avg(`runs_scored`) as `ars`
+from `view_innings`
+where `team_id` = 1
+group by `player_id`
+order by `ars` desc
+
+// solution
+select distinct *
+from
+(
+   select avg(`runs_scored`) as `ars`
+   from `view_innings`
+   where `team_id` = 1
+   group by `player_id`
+   order by `ars` desc
+) as tab1;

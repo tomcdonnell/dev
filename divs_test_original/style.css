@@ -1,0 +1,183 @@
+/**************************************************************************************************\
+*
+* Filename: "style.css"
+*
+* Purpose: Test for layout of Bergamot.
+*
+* Author: Tom McDonnell 2007.
+*
+\**************************************************************************************************/
+
+*
+{
+   padding: 0;
+   margin: 0;
+   cursor: default;
+}
+
+body
+{
+   overflow: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, p
+{
+   -moz-user-select: none;
+}
+
+div.clearFloats
+{
+   clear: both;
+}
+
+/* Title bar. *************************************************************************************/
+
+div#titleBar > h1
+{
+   background-color: silver;
+   color: black;
+}
+
+/* Frames. ****************************************************************************************/
+
+div#top, div#bottom
+{
+   background-color: yellow;
+}
+
+div#topLeft, div#topRight
+{
+   float: left;
+}
+
+/* Dividers. **************************************************************************************/
+
+div#hDivider, div#vDivider
+{
+   background-color: silver;
+}
+
+div#vDivider
+{
+   float: left;
+}
+
+div#vDivider:hover
+{
+   cursor: e-resize;
+}
+
+div#hDivider:hover
+{
+   cursor: n-resize;
+}
+
+/* Tabs *******************************************************************************************/
+
+div.tabHeadings
+{
+   background-color: silver;
+}
+
+div.tabHeadings > h2
+{
+   display: inline;
+   font-size: medium;
+   white-space: nowrap;
+   background-color: gray;
+}
+
+div.tabHeadings > h2.selected
+{
+   background-color: yellow;
+}
+
+div.tabContents
+{
+   overflow: auto;
+}
+
+div.tabContents > div
+{
+   display: none;
+}
+
+div.tabContents > div.selected
+{
+   display: block;
+}
+
+/* Modules. ***************************************************************************************/
+
+div.tabContents > div > div
+{
+   background-color: yellow;
+}
+
+div.tabContents > div *
+{
+   white-space: nowrap;
+}
+
+/* Bottom Drawers. ********************************************************************************/
+
+div#bottomDrawers > div.tabHeadings > h2.selected
+{
+   position: fixed;
+   background-color: blue;
+}
+
+div#bottomDrawers > div.tabContents > div.selected > div
+{
+   position: fixed;
+   background-color: blue;
+}
+
+/* Bottom bar. ************************************************************************************/
+
+div#bottomBar
+{
+   height: 20px;
+   background-color: silver;
+}
+
+/* Ghosts. ****************************************************************************************/
+
+div#ghostOne, div#ghostTwo
+{
+   visibility: hidden;
+   position: fixed;
+   background-color: red;
+}
+
+div#drawerGhost
+{
+   display: none;
+   position: fixed;
+   background-color: red;
+}
+
+/* Selects. ***************************************************************************************/
+
+table.module
+{
+   width: 100%;
+}
+
+select
+{
+   width: 100%;
+}
+
+table.module tbody tr td.c1 {width:  6%;}
+table.module tbody tr td.c2 {width:  5%;}
+table.module tbody tr td.c3 {width:  5%;}
+table.module tbody tr td.c4 {width: 42%;}
+table.module tbody tr td.c5 {width: 42%;}
+
+table.module tbody tr td input
+{
+   width: 100%;
+}
+
+/*******************************************END*OF*FILE********************************************/
