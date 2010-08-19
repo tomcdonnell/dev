@@ -1,0 +1,69 @@
+/**************************************************************************************************\
+*
+* vim: ts=3 sw=3 et wrap go-=b
+*
+* Filename: "explorable_table.css"
+*
+* Project: Explorable Table.
+*
+* Purpose: Stylesheet.
+*
+* @author: Tom McDonnell 2010-08-10
+*
+\**************************************************************************************************/
+
+table#explorableTable
+{
+   width: 100%;
+   font-family: sans-serif;
+   font-size: small;
+}
+
+table#explorableTable,
+table#explorableTable th,
+table#explorableTable td,
+table#explorableTable input.expandDataRowsButton,
+table#explorableTable input.expandCategoryButton
+{
+   border-style: solid;
+   border-collapse: collapse;
+   border-width: 1px;
+   border-color: black;
+}
+
+table#explorableTable input.expandDataRowsButton,
+table#explorableTable input.expandCategoryButton,
+table#explorableTable input.categoryIndentElement
+{
+   width: 20px;
+   height: 20px;
+}
+
+table#explorableTable input.expandCategoryButton.expand
+{
+   background-color: #88ff88;
+}
+
+table#explorableTable input.expandCategoryButton.contract
+{
+   background-color: #ff8888;
+}
+
+table#explorableTable input.expandDataRowsButton
+{
+   background-color: #8888ff;
+}
+
+table#explorableTable tr.categoryTr,
+table#explorableTable tr.loadingCategoryRowsTr
+{
+   background-color: #cccccc;
+}
+
+table#explorableTable span.categoryIndentSpan
+{
+   color: #cccccc;
+   background-color: #cccccc;
+}
+
+/*******************************************END*OF*FILE********************************************/
