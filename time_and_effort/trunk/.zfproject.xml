@@ -1,0 +1,191 @@
+<?xml version="1.0"?>
+<projectProfile type="default" version="1.10">
+  <projectDirectory>
+    <projectProfileFile filesystemName=".zfproject.xml"/>
+    <applicationDirectory classNamePrefix="Application_">
+      <apisDirectory enabled="false"/>
+      <configsDirectory>
+        <applicationConfigFile type="ini"/>
+      </configsDirectory>
+      <controllersDirectory>
+        <controllerFile controllerName="Index">
+          <actionMethod actionName="index"/>
+        </controllerFile>
+        <controllerFile controllerName="Error"/>
+        <controllerFile controllerName="Timesheet">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="weekView"/>
+          <actionMethod actionName="dayView"/>
+          <actionMethod actionName="saveTimeLog"/>
+          <actionMethod actionName="setDeleted"/>
+        </controllerFile>
+        <controllerFile controllerName="Admin">
+          <actionMethod actionName="index"/>
+        </controllerFile>
+        <controllerFile controllerName="AjaxCommon">
+          <actionMethod actionName="index"/>
+        </controllerFile>
+        <controllerFile controllerName="AjaxAdmin">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="browse"/>
+        </controllerFile>
+        <controllerFile controllerName="AjaxWorker">
+          <actionMethod actionName="index"/>
+        </controllerFile>
+        <controllerFile controllerName="Activity">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="getAllActivities"/>
+          <actionMethod actionName="getActivityByStaffId"/>
+        </controllerFile>
+        <controllerFile controllerName="Task">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="getAllTasks"/>
+          <actionMethod actionName="getTasksByActivityId"/>
+        </controllerFile>
+        <controllerFile controllerName="Staff">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="loginForm"/>
+        </controllerFile>
+      </controllersDirectory>
+      <formsDirectory enabled="false">
+        <formFile formName="Login"/>
+      </formsDirectory>
+      <layoutsDirectory enabled="false"/>
+      <modelsDirectory>
+        <modelFile modelName="Activity"/>
+        <modelFile modelName="Task"/>
+        <modelFile modelName="Staff"/>
+        <modelFile modelName="Timesheet"/>
+        <dbTableDirectory>
+          <dbTableFile dbTableName="Timesheet"/>
+          <dbTableFile dbTableName="Timelog"/>
+          <dbTableFile dbTableName="Task"/>
+          <dbTableFile dbTableName="Activity"/>
+          <dbTableFile dbTableName="Staff"/>
+          <dbTableFile dbTableName="Tasktimelog"/>
+          <dbTableFile dbTableName="LinkActivtyStaff"/>
+        </dbTableDirectory>
+        <modelFile modelName="Timelog"/>
+        <modelFile modelName="Base"/>
+        <modelFile modelName="BaseMapper"/>
+        <modelFile modelName="ActivityMapper"/>
+        <modelFile modelName="TaskMapper"/>
+        <modelFile modelName="Tasktimelog"/>
+        <modelFile modelName="TasktimelogMapper"/>
+        <modelFile modelName="StaffMapper"/>
+        <modelFile modelName="LinkActivityStaff"/>
+        <modelFile modelName="LinkActivityStaffMapper"/>
+      </modelsDirectory>
+      <modulesDirectory enabled="false"/>
+      <viewsDirectory>
+        <viewScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Index">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Error">
+            <viewScriptFile forActionName="error"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Timesheet">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Timesheet">
+            <viewScriptFile forActionName="weekView"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Timesheet">
+            <viewScriptFile forActionName="dayView"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Admin">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="AjaxCommon">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="AjaxAdmin">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="AjaxWorker">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="AjaxAdmin">
+            <viewScriptFile forActionName="browse"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Activity">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Task">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Activity">
+            <viewScriptFile forActionName="getAllActivities"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Task">
+            <viewScriptFile forActionName="getAllTasks"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Task">
+            <viewScriptFile forActionName="getTasksByActivityId"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Activity">
+            <viewScriptFile forActionName="getActivityByStaffId"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Timesheet">
+            <viewScriptFile forActionName="saveTimeLog"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Timesheet">
+            <viewScriptFile forActionName="setDeleted"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Staff">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Staff">
+            <viewScriptFile forActionName="loginForm"/>
+          </viewControllerScriptsDirectory>
+        </viewScriptsDirectory>
+        <viewHelpersDirectory/>
+        <viewFiltersDirectory enabled="false"/>
+      </viewsDirectory>
+      <bootstrapFile filesystemName="Bootstrap.php"/>
+    </applicationDirectory>
+    <dataDirectory enabled="false">
+      <cacheDirectory enabled="false"/>
+      <searchIndexesDirectory enabled="false"/>
+      <localesDirectory enabled="false"/>
+      <logsDirectory enabled="false"/>
+      <sessionsDirectory enabled="false"/>
+      <uploadsDirectory enabled="false"/>
+    </dataDirectory>
+    <docsDirectory>
+      <file filesystemName="README.txt"/>
+    </docsDirectory>
+    <libraryDirectory>
+      <zfStandardLibraryDirectory enabled="false"/>
+    </libraryDirectory>
+    <publicDirectory>
+      <publicStylesheetsDirectory enabled="false"/>
+      <publicScriptsDirectory enabled="false"/>
+      <publicImagesDirectory enabled="false"/>
+      <publicIndexFile filesystemName="index.php"/>
+      <htaccessFile filesystemName=".htaccess"/>
+    </publicDirectory>
+    <projectProvidersDirectory enabled="false"/>
+    <temporaryDirectory enabled="false"/>
+    <testsDirectory>
+      <testPHPUnitConfigFile filesystemName="phpunit.xml"/>
+      <testApplicationDirectory>
+        <testApplicationBootstrapFile filesystemName="bootstrap.php"/>
+        <testApplicationControllerDirectory>
+          <testApplicationControllerFile filesystemName="TimesheetControllerTest.php"/>
+          <testApplicationControllerFile filesystemName="AdminControllerTest.php"/>
+          <testApplicationControllerFile filesystemName="AjaxCommonControllerTest.php"/>
+          <testApplicationControllerFile filesystemName="AjaxAdminControllerTest.php"/>
+          <testApplicationControllerFile filesystemName="AjaxWorkerControllerTest.php"/>
+          <testApplicationControllerFile filesystemName="ActivityControllerTest.php"/>
+          <testApplicationControllerFile filesystemName="TaskControllerTest.php"/>
+          <testApplicationControllerFile filesystemName="StaffControllerTest.php"/>
+        </testApplicationControllerDirectory>
+      </testApplicationDirectory>
+      <testLibraryDirectory>
+        <testLibraryBootstrapFile filesystemName="bootstrap.php"/>
+      </testLibraryDirectory>
+    </testsDirectory>
+  </projectDirectory>
+</projectProfile>

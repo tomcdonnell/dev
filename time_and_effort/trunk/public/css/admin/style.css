@@ -1,0 +1,59 @@
+/**************************************************************************************************\
+*
+* vim: ts=3 sw=3 et wrap go-=b
+*
+* Filename: "style.css"
+*
+* Project: Time and Effort.
+*
+* Purpose: Main stylesheet for the Administrator's view.
+*
+* @author: Tom McDonnell 2010-08-11
+*
+\**************************************************************************************************/
+
+*
+{
+   cursor: default;
+}
+
+html, body, div.content
+{
+   height: 100%;
+}
+
+div#mainLeftDiv
+{
+   float: left;
+   background-color: #ffccff;
+   width: 15%;
+   height: 80%;
+}
+
+div#mainLeftDiv ul
+{
+   margin: 0;
+   padding: 0;
+}
+
+div#mainRightDiv
+{
+   float: right;
+   background-color: #ffffff;
+   width: 85%;
+   height: 80%;
+}
+
+input#newActivityButton
+{
+   margin-top: 20px;
+   width: 100%;
+}
+
+div#mainLeftDiv li.selected
+{
+   background-color: #000000;
+   color: #ffffff;
+}
+
+/*******************************************END*OF*FILE********************************************/

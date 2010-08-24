@@ -1,0 +1,90 @@
+<div id="timesheet-form" title="<?php echo $this->date ?>">
+    <form id="dayView-form" action="">
+        <table class="timesheetDayTable">
+            <thead>
+                <tr class="headerRow">
+                    <td colspan="2">
+                        <div id="timesheetView">
+                            <button id="day">Day</button>
+                            <button id="week">Week</button>
+                            <input type="hidden" id="timesheetCal" value="<?php echo $this->sqlDate; ?>" />
+                            <input type="hidden" id="idStaff" value="<?php echo $this->idStaff; ?>" />
+                        </div>
+                    </td>
+                    <td colspan="2">
+                        <span class="dateLabel floatRight"><?php echo $this->date ?></span>
+                    </td>
+                </tr>
+                <tr class="headerTitle">
+                    <td class="activityCol">Activity / Task</td>
+                    <td class="hoursCol">Hours</td>
+                    <td class="commentCol" colspan="3">Comment</td>
+                </tr>
+            </thead>
+            <tbody id="timesheetEntryRows">
+                <?php
+                foreach ($this->timeLogs as $timeLog) {
+                ?>
+                    <tr id="taskRow-<?php echo $timeLog['timelog']->id ?>"class="timeEntry">
+                        <td class="activityCol">
+                            <input type="hidden" class="activityIdLabel" value="<?php echo $timeLog['activityId'] ?>" />
+                            <input type="hidden" class="taskIdLabel" value="<?php echo $timeLog['timelog']->idTask ?>" />
+                            <span class="activityLabel"><?php echo $timeLog['activityNo'] . " - " . $timeLog['activityTitle'] ?></span><br/>
+                            <span class="taskLabel"><?php echo $timeLog['taskTitle'] ?></span>
+                        </td>
+                        <td class="hoursCol entryHours realHours">
+                        <?php echo number_format($timeLog['timelog']->hours, 2) ?>
+                    </td>
+                    <td class="commentCol entryComment">
+                        <?php echo $timeLog['timelog']->comment ?>
+                    </td>
+                    <td style="text-align: right;" class="actionCol">
+                        <div class="actionBtns">
+                            <button class="entryEdit">Edit</button>
+                            <button class="entryRemove">Remove</button>
+                        </div>
+                    </td>
+                </tr>
+                <?php } ?>
+                    <tr class="timeEntry hidden" id="blankEntry">
+                        <td class="activityCol">
+                            <input type="hidden" class="activityIdLabel" value="" />
+                            <input type="hidden" class="taskIdLabel" value="" />
+                        <span class="activityLabel">&nbsp;</span><br/>
+                        <span class="taskLabel">&nbsp;</span>
+                    </td>
+                    <td class="hoursCol entryHours"></td>
+                    <td class="commentCol entryComment"></td>
+                    <td style="text-align: right;" class="actionCol">
+                        <div class="actionBtns">
+                            <button class="entryEdit">Edit</button>
+                            <button class="entryRemove">Remove</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr class="taskAdderRow">
+                    <td class="activityCol">
+                        <select id="activityId">
+                        </select>
+                        <br/>
+                        <select id="taskId">
+                        </select>
+                        <p>
+                            <input id="saveEntryBtn" type="button" value="Save New Entry" />
+                            <span class="floatRight">TOTAL</span>
+                        </p>
+                    </td>
+                    <td class="hoursCol">
+                        <input class="hours" id="addHours" type="text" />
+                        <p><span id="dayTotal">0.00</span></p>
+                    </td>
+                    <td class="commentCol" colspan="2">
+                        <textarea class="comment" id="addComment" rows="2"></textarea>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </form>
+</div>

@@ -1,0 +1,23 @@
+<?php
+/*
+ * vim: sw=4 ts=4 et wrap co=100
+ */
+?>
+<h1>Administrator's View</h1>
+<div id='mainLeftDiv'>
+    <h2>Browse Activities</h2>
+    <ul>
+<?php
+foreach ($this->rootCategoryNameById as $idCategory => $heading)
+{
+?>
+        <li id='<?php echo $idCategory; ?>' class='navPanelItem'><?php echo $heading; ?></li>
+<?php
+}
+?>
+    </ul>
+    <input type='button' id='newActivityButton' value='Create New Activity'>
+</div>
+<div id='mainRightDiv'>
+    <table id='explorableTable'><thead></thead><tbody></tbody></table>
+</div>
