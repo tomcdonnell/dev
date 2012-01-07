@@ -1,0 +1,8 @@
+# IMPORTANT
+# ---------
+# Allow access only to the tom directory.
+# Access is allowed to tom only so that tom/js and tom/css may be accessed.
+# Nothing else within tom should be accessible.
+RewriteEngine on
+RewriteCond $1 !^(index\.php|tom)
+RewriteRule ^(.*)$ index.php/$1 [L]

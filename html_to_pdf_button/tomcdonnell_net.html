@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC
+ "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+ <head>
+  <link rel='stylesheet' href='http://tomcdonnell.net/style.css?1325767603' />
+  <title>tomcdonnell.net</title>
+ </head>
+ <body>
+  <div class='topBar'><a href='small_apps/library/tom/php/pages/contact_me/index.php?backAnchorHref=http://www.tomcdonnell.net&amp;backAnchorText=Back to tomcdonnell.net&amp;pageTitle=tomcdonnell.net - Contact Me&amp;pageHeading=Contact Tom McDonnell&amp;emailSrcName=tomcdonnell.net contact form&amp;emailDstName=tom'>Contact Me</a></div>
+  <div class='header'>
+
+   <h1>tomcdonnell.net</h1>
+   <p>The personal website of Tom McDonnell - programmer.</p>
+  </div>
+  <div class='separator'><p>The purpose of this website is to provide an online portfolio of my work.</p></div>
+  <div class='content'>
+   <div class='row'>
+    <div>
+
+     <h2>My Websites</h2>
+     <p>(All require Firefox)</p>
+     <a href='http://www.indoorcricketstats.net'>IndoorCricketStats.net</a><br />
+     <a href='http://www.collaborativecomic.com'>CollaborativeComic.com</a>
+    </div>
+    <div>
+     <h2>Programming Tools</h2>
+
+     <p>(All require Firefox)</p>
+     <a href='./small_apps/bracketed_text_formatter/index.php'>Bracketed Text Formatter</a>
+     <br />
+     <a href='./small_apps/color_selector/index.php'>Color Selector</a><br />
+     <a href='./small_apps/color_selector_2/index.php'>Color Selector 2</a>
+    </div>
+    <div>
+
+     <h2>Games</h2>
+     <p>(All require Firefox)</p>
+     <a href='./games/tetris/index.php'>Tetris Tribute</a><br />
+     <a href='./games/racing/index.php'>Racing</a>
+    </div>
+    <div class='clearFloats'></div>
+   </div>
+
+   <div class='row'>
+    <div>
+     <h2>Art</h2>
+     <a href='./art/paintings/index.html'>Paintings</a><br />
+     <a href='./small_apps/color_spectrum_art/index.php'>Color Spectrum Art</a><br />
+     <a href='./art/word_art/index.php'>Word Art</a><br />
+     <a href='./art/cd_cover_art/index.php'>CD Cover Art</a>
+
+    </div>
+    <div>
+     <h2>Writing</h2>
+     <a href='./writing/poetry/index.php'>Poetry</a><br />
+     <a href='http://tomcdonnell.blogspot.com'>Blog</a>
+    </div>
+    <div>
+
+     <h2>Programming Projects</h2>
+     <a href='./small_apps/anagram_finder/index.php'>Anagram Finder</a><br/>
+     <a href='./small_apps/anagram_checker/index.php'>Anagram Checker</a><br/>
+     <a href='./small_apps/vps_hack_day/index.php'>VPS Hack Day 2010-11-18</a><br/>
+     <a href='./small_apps/risk_battle_calculator/index.php'>Risk Battle Calculator</a><br/>
+<!--     <a href='./small_apps/soduku_solver/index.php'>Soduku Solver</a> -->
+    </div>
+
+    <div class='clearFloats'></div>
+   </div>
+   <div class='row'>
+    <div>
+     <h2>Miscellaneous</h2>
+     <a href='./misc/mechanical_wings/index.html'>Mechanical Wings</a><br />
+    </div>
+   </div>
+
+   <div class='clearFloats'></div>
+  </div>
+  <div class='topBar'><a href='small_apps/library/tom/php/pages/contact_me/index.php?backAnchorHref=http://www.tomcdonnell.net&amp;backAnchorText=Back to tomcdonnell.net&amp;pageTitle=tomcdonnell.net - Contact Me&amp;pageHeading=Contact Tom McDonnell&amp;emailSrcName=tomcdonnell.net contact form&amp;emailDstName=tom'>Contact Me</a></div>
+
+
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript">
+ $(document).ready(function () {$('a#getPageAsPdf').click(onClickGetPageAsPdf);});
+
+ function onClickGetPageAsPdf(ev)
+ {
+    $('input#htmlTextarea'   ).attr('value', getEntirePageHtml());
+    $('form#getPageAsPdfForm').submit();
+    return false;
+ }
+
+ function getEntirePageHtml()
+ {
+    var attributes       = $('html')[0].attributes;  
+    var attributesString = '';
+
+    for (var i = 0, len = attributes.length; i < len; ++i)
+    {
+       var attribute = attributes[i];
+       attributesString += ' ' + attribute.name + '="' + attribute.value + '"';
+    }
+
+    // NOTE: Should get doctype tag somehow. Use default for now.
+    var doctypeTag =
+    (
+       "<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Frameset//EN'" +
+       " 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd'>"
+    );
+
+    return doctypeTag + '<html' + attributesString + '>' + $('html').html() + '</html>';
+ }
+</script>
+<form id='getPageAsPdfForm' action='/html_to_pdf_button/get_page_as_pdf_submit.php' method='post'>
+ <input type='hidden' id='htmlTextarea' name='html' value=''/>
+ <input type='hidden' name='paper' value='a4'/>
+ <input type='hidden' name='orientation' value='portrait'/>
+</form>
+<a id='getPageAsPdf' href=''>Get page as PDF</a>
+
+
+
+
+ </body>
+</html>

@@ -1,0 +1,34 @@
+/*
+ * vim: ts=3 sw=3 et wrap co=100 go-=b
+ */
+
+div#locations_block
+{
+   background: #eee;
+   border: 2px solid black;
+   overflow: hidden;
+   width: 870px;
+}
+
+ul#locations_list
+{
+   border: 1px solid green;
+   float: left;
+   list-style: none;
+   width: 100px;
+}
+
+div#locations_text
+{
+   border: 1px solid red;
+   float: left;
+   width: 200px;
+}
+
+div#map_div
+{
+   border: 1px solid red;
+   float: left;
+   height: 320px;
+   width: 500px;
+}

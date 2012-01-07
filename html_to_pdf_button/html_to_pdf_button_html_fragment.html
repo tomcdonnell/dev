@@ -1,0 +1,38 @@
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript">
+ $(document).ready(function () {$('a#getPageAsPdf').click(onClickGetPageAsPdf);});
+
+ function onClickGetPageAsPdf(ev)
+ {
+    $('input#htmlTextarea'   ).attr('value', getEntirePageHtml());
+    $('form#getPageAsPdfForm').submit();
+    return false;
+ }
+
+ function getEntirePageHtml()
+ {
+    var attributes       = $('html')[0].attributes;  
+    var attributesString = '';
+
+    for (var i = 0, len = attributes.length; i < len; ++i)
+    {
+       var attribute = attributes[i];
+       attributesString += ' ' + attribute.name + '="' + attribute.value + '"';
+    }
+
+    // NOTE: Should get doctype tag somehow. Use default for now.
+    var doctypeTag =
+    (
+       "<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Frameset//EN'" +
+       " 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd'>"
+    );
+
+    return doctypeTag + '<html' + attributesString + '>' + $('html').html() + '</html>';
+ }
+</script>
+<form id='getPageAsPdfForm' action='/html_to_pdf_button/get_page_as_pdf_submit.php' method='post'>
+ <input type='hidden' id='htmlTextarea' name='html' value=''/>
+ <input type='hidden' name='paper' value='a4'/>
+ <input type='hidden' name='orientation' value='portrait'/>
+</form>
+<a id='getPageAsPdf' href=''>Get page as PDF</a>
