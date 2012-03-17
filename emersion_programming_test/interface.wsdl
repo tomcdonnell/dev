@@ -1,0 +1,38 @@
+<?xml version ='1.0' encoding ='UTF-8'?>
+<definitions name='Interface'
+ targetNamespace='http://localhost/emersion_programming_test/interface.wsdl'
+ xmlns:tns='http://localhost/emersion_programming_test/interface.wsdl'
+ xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/'
+ xmlns='http://schemas.xmlsoap.org/wsdl/'>
+ <message name='moveIndexInArrayRequest'>
+  <part name='symbol1' type='xsd:array'/>
+  <part name='symbol2' type='xsd:integer'/>
+  <part name='symbol3' type='xsd:string'/>
+ </message>
+ <message name='moveIndexInArrayResponse'><part name='Result' type='xsd:array'/></message>
+ <portType name='InterfacePortType'>
+  <operation name='moveIndexInArray'>
+   <input message='tns:moveIndexInArrayRequest'/>
+   <output message='tns:moveIndexInArrayResponse'/>
+  </operation>
+ </portType>
+ <binding name='InterfaceBinding' type='tns:InterfacePortType'>
+  <soap:binding style='rpc' transport='http://schemas.xmlsoap.org/soap/http'/>
+  <operation name='moveIndexInArray'>
+   <soap:operation soapAction='urn:localhost-interface#moveIndexInArray'/>
+   <input>
+    <soap:body use='encoded' namespace='urn:localhost-interface'
+     encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/>
+   </input>
+   <output>
+    <soap:body use='encoded' namespace='urn:localhost-interface'
+     encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/>
+   </output>
+  </operation>
+ </binding>
+ <service name='InterfaceService'>
+  <port name='InterfacePort' binding='InterfaceBinding'>
+   <soap:address location='http://localhost/emersion_programming_test/soap_server.php'/>
+  </port>
+ </service>
+</definitions>
