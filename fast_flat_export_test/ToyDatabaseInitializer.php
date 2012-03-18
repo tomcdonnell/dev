@@ -38,8 +38,8 @@ class ToyDatabaseInitializer
       $this->_createTables();
 
       echo ' * Filling table `person`...';
-      $t0 = microtime(true);
-      $pdoEx->exec
+      $t0            = microtime(true);
+      $nRowsAffected = $pdoEx->exec
       (
          "INSERT INTO person (name)
           SELECT DISTINCT CONCAT(first_name, ' ', surname)
@@ -49,9 +49,14 @@ class ToyDatabaseInitializer
       );
       echo 'done (', round(microtime(true) - $t0, 3), "s).\n";
 
+      if ($nRowsAffected != $nPersons)
+      {
+         throw new Exception("Expected $nPersons to be created.  $nRowsAffected created.");
+      }
+
       echo ' * Filling table `country`...';
-      $t0 = microtime(true);
-      $pdoEx->exec
+      $t0            = microtime(true);
+      $nRowsAffected = $pdoEx->exec
       (
          "INSERT INTO country (name)
           SELECT country
@@ -59,6 +64,11 @@ class ToyDatabaseInitializer
           LIMIT $nCountries"
       );
       echo 'done (', round(microtime(true) - $t0, 3), "s).\n";
+
+      if ($nRowsAffected != $nCountries)
+      {
+         throw new Exception("Expected $nCountries to be created.  $nRowsAffected created.");
+      }
 
       $this->_fillLinkPersonCountryRows($nPersons, $nCountries);
    }
@@ -139,7 +149,7 @@ class ToyDatabaseInitializer
 
          foreach ($idPersons as $idPerson)
          {
-            for ($idCountry = 1; $idCountry < $nCountries; ++$idCountry)
+            for ($idCountry = 1; $idCountry <= $nCountries; ++$idCountry)
             {
                if (rand(0, 1))
                {
@@ -155,7 +165,7 @@ class ToyDatabaseInitializer
 
          echo '.';
       }
-      echo "done.\n   Inserted $nRowsInserted rows (", round((microtime(true) - $t0), 3), "s)\n\n";
+      echo "done.\n   Inserted $nRowsInserted rows (", round((microtime(true) - $t0), 3), "s).\n\n";
    }
 
    // Private variables. ////////////////////////////////////////////////////////////////////////
