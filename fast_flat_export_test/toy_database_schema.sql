@@ -25,12 +25,3 @@ CREATE TABLE link_person_country (
 ALTER TABLE link_person_country
 ADD CONSTRAINT FOREIGN KEY (idPerson) REFERENCES person (id),
 ADD CONSTRAINT FOREIGN KEY (idCountry) REFERENCES country (id);
-
-INSERT INTO person (name)
-SELECT DISTINCT CONCAT(first_name, " ", surname)
-FROM dg_test_data.dg_first_names AS first_names
-JOIN dg_test_data.dg_surnames;
-
-INSERT INTO country (name)
-SELECT country
-FROM dg_test_data.dg_countries;

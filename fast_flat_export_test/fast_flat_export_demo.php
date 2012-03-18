@@ -1,14 +1,16 @@
 <?php
 require_once '../../lib/tom/php/database/mysql_pdo/PdoExtended.php';
+require_once 'ToyDatabaseInitializer.php';
 
 try
 {
-   $pdoEx      = new PdoExtended('mysql:host=localhost;dbname=toy', 'root', '');
-   $nPersons   = 10;
-   $nCountries = 10;
+   $pdoEx            = new PdoExtended('mysql:host=localhost;dbname=test', 'root', '');
+   $toyDbInitializer = new ToyDatabaseInitializer($pdoEx);
+   $nPersons         = 1000;
+   $nCountries       = 10;
 
-   fillLinkPersonCountryRows($pdoEx, $nPersons, $nCountries);
-   testFlatExportMethods($pdoEx, $nPersons, $nCountries);
+   $toyDbInitializer->init($nPersons, $nCountries);
+   testFlatExportMethods($pdoEx, $nCountries);
 }
 catch (Exception $e)
 {
@@ -18,86 +20,32 @@ catch (Exception $e)
 /*
  *
  */
-function fillLinkPersonCountryRows(PdoExtended $pdoEx, $nPersons, $nCountries)
+function testFlatExportMethods(PdoExtended $pdoEx, $nCountries)
 {
-   echo "Creating Test Data\n";
-   echo ' * Getting idPersons...';
-   $idPersons       = $pdoEx->queryColumn("SELECT id FROM person LIMIT $nPersons");
-   $idPersonsChunks = array_chunk($idPersons, 10000);
-   echo "done.\n   Got ", count($idPersons), " idPersons.\n";
-
-   echo ' * Truncating table link_person_country...';
-   $pdoEx->exec('TRUNCATE TABLE link_person_country');
-   echo "done.\n";
-
-   echo ' * Filling table link_person_country...';
-   $t0 = microtime(true);
-   foreach ($idPersonsChunks as $idPersons)
-   {
-      $values = array();
-
-      foreach ($idPersons as $idPerson)
-      {
-         for ($idCountry = 1; $idCountry < $nCountries; ++$idCountry)
-         {
-            if (rand(0, 1))
-            {
-               $values[] = "($idPerson,$idCountry)";
-            }
-         }
-      }
-
-      $nRowsInserted = $pdoEx->exec
-      (
-         'INSERT INTO link_person_country (idPerson, idCountry) VALUES ' . implode(',', $values)
-      );
-
-      echo '.';
-   }
-   echo "done.\n   Inserted $nRowsInserted rows (", round((microtime(true) - $t0), 3), "s)\n\n";
-}
-
-/*
- *
- */
-function testFlatExportMethods(PdoExtended $pdoEx, $nPersons, $nCountries)
-{
-   $file         = fopen('flat_export.csv', 'w');
-   $maxCountries = $pdoEx->queryField
-   (
-      'SELECT MAX(nCountries)
-       FROM
-       (
-          SELECT idPerson, COUNT(*) AS nCountries
-          FROM link_person_country
-          GROUP BY idPerson
-       ) AS dummy'
-   );
-
-   echo "maxCountries: $maxCountries\n\n";
+   $file1 = fopen('flat_export_1.csv', 'w');
+   $file2 = fopen('flat_export_2.csv', 'w');
 
    echo "Flat Export - Traditional\n";
    $t0 = microtime(true);
-   writeFlatCsvExportTraditional($pdoEx, $file, $nPersons, $maxCountries);
+   writeFlatCsvExportTraditional($pdoEx, $file1, $nCountries);
    echo ' * Time taken: ', round((microtime(true) - $t0), 3), "s\n\n";
 
    echo "Flat Export - Fast\n";
    $t0 = microtime(true);
-   writeFlatCsvExportFast($pdoEx, $file, $nPersons, $nCountries, $maxCountries);
+   writeFlatCsvExportFast($pdoEx, $file2, $nCountries);
    echo ' * Time taken: ', round((microtime(true) - $t0), 3), "s\n\n";
 }
 
 /*
  *
  */
-function writeFlatCsvExportTraditional(PdoExtended $pdoEx, $file, $nPersons, $maxCountries)
+function writeFlatCsvExportTraditional(PdoExtended $pdoEx, $file, $nCountries)
 {
    echo ' * Getting person names...';
    $personNameById = $pdoEx->queryIndexedColumn
    (
       'SELECT id, name
-       FROM person
-       LIMIT ' . $nPersons
+       FROM person'
    );
    echo "done.\n   Got ", count($personNameById), " names.\n";
 
@@ -114,7 +62,7 @@ function writeFlatCsvExportTraditional(PdoExtended $pdoEx, $file, $nPersons, $ma
          array($idPerson)
       );
 
-      $nCountriesToFill = $maxCountries - count($countryNames);
+      $nCountriesToFill = $nCountries - count($countryNames);
 
       if ($nCountriesToFill > 0)
       {
@@ -129,7 +77,7 @@ function writeFlatCsvExportTraditional(PdoExtended $pdoEx, $file, $nPersons, $ma
 /*
  *
  */
-function writeFlatCsvExportFast(PdoExtended $pdoEx, $file, $nPersons, $nCountries, $maxCountries)
+function writeFlatCsvExportFast(PdoExtended $pdoEx, $file, $nCountries)
 {
    $selectFields = array('person.name');
    $joinClauses  = array();
@@ -137,7 +85,7 @@ function writeFlatCsvExportFast(PdoExtended $pdoEx, $file, $nPersons, $nCountrie
    echo ' * Building SQL query...';
    for ($i = 0; $i < $nCountries; ++$i)
    {
-      $selectFields[] = "IF(c_$i.name IS NULL, '', c_$i.name)";
+      $selectFields[] = "IF(lpc_$i.idCountry IS NULL, 'N', 'Y')";
       $joinClauses[]  =
       (
          "LEFT JOIN link_person_country AS lpc_$i ON
@@ -151,8 +99,7 @@ function writeFlatCsvExportFast(PdoExtended $pdoEx, $file, $nPersons, $nCountrie
                 LIMIT 1
                 OFFSET $i
              )
-          )
-          LEFT JOIN country AS c_$i ON (c_$i.id=lpc_$i.idCountry)"
+          )"
       );
    }
    echo "done.\n";
@@ -162,9 +109,7 @@ function writeFlatCsvExportFast(PdoExtended $pdoEx, $file, $nPersons, $nCountrie
    (
       'SELECT ' . implode(',', $selectFields) . '
        FROM person
-       ' . implode("\n", $joinClauses) . '
-       WHERE person.id<=?',
-      array($nPersons)
+       ' . implode("\n", $joinClauses)
    );
    echo "done.\n";
 

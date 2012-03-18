@@ -1,0 +1,66 @@
+Fast Flat Exports
+-----------------
+
+Every database application that exists to facilitate convenient access to its data, that is <i>every</i> database application, requires a way for users or administrators to generate bulk exports of its data.
+
+At least for small applications that I am most familiar with, the most convenient format for a bulk export tends to be a single <a href=''>CSV</a> file.  The process of generating a bulk export involves combining many or all of the tables in the source database into a single table, then dumping that table as a CSV file.
+
+Since databases by their nature tend to accumulate data and grow large, exporting bulk data can be a computationally intensive and time consuming operation.  While implementing a bulk export feature for a recent project, I stumbled upon a method that significantly sped up the process.  The trick was to accomplish in a single SQL query what would normally be done in many smaller queries.
+
+In what follows I will demonstrate the idea using MySQL and php code snippets.  Comparison timing information will be provided also.
+
+
+A Simple Database
+-----------------
+
+Consider the following simple database schema.
+
+<schema>
+
+Table `person` contains a list of people, table `country` contains a list of countries, and table `link_person_country` records the countries that each person has visited.
+
+Test data obtained from <a href='http://www.generatedata.com'>generatedata.com</a> has been added to the database.
+
+
+Flat Export - Traditional Method for when Memory is Scarce
+----------------------------------------------------------
+
+First get a list of all the people in the database.  The query below is executed once per export.
+
+<SQL query>
+
+Next, for each person, get a list of all the countries that person has visited.  The following query must be executed for each person found in the previous query, every time the export is run.
+
+<SQL query>
+
+The result of the query above is exported as a single row of the CSV file.  The good news is that this method is light on memory relative to the faster method to be described.  Rows of the CSV file are generated independently of one another, so a CSV row can be output immediately after each query is run, and then the result of that query can be forgotten.
+
+Here is the php function for the traditional method.
+
+<php code>
+
+
+Flat Export - Fast Method for when Memory is Plentiful
+------------------------------------------------------
+
+If enough memory is available, the data for all people can be obtained in a single query.  The query below need only be executed once per export.
+
+<SQL query>
+
+Here is the php function for the fast method.
+
+<php code>
+
+
+Run Time Comparison Charts
+--------------------------
+
+The test data used in creating the charts below was generated in the following way.
+
+First, the number of people and the number of countries to be used were chosen.  For the two charts below, one was held constant while the other was varied.
+
+Once the number of people and the number of countries to be used was decided, the countries that each person visited were decided by the flip of a coin.  That is, each person was given a fifty percent chance of visiting each country.
+
+<php code>
+
+
