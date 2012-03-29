@@ -1,0 +1,746 @@
+/*
+  Running MySource Matrix
+  Developed by Squiz - http://www.squiz.net
+  MySource, MySource Matrix and Squiz.net are registered Trademarks of Squiz Pty Ltd
+  Page generated: 08 January 2012 21:30:46
+*/
+
+
+/* TABLE OF CONTENTS
+
+    1: - Global Styles
+    
+        1.1: - General
+        
+    2: - Banner
+
+    3: - Page Tools
+
+    4: - Left Hand Navigation
+
+       4.1 - Second Level Navigation
+
+    5: - Portal Boxes
+ 
+    6: - Quick Links
+
+    7: - Page Tools
+
+    8: - Table Styling
+
+    9: - WebMail Forms
+    
+    10: - On-page Stuff
+
+ 1 :-------- Global Styles ------------ 
+ 1.1 : -------- General ------------ */
+body {
+background: url("http://www.dpi.vic.gov.au/__data/assets/image/0011/132014/gradient.jpg") repeat-x scroll 0 0 #F1F1F1;
+font-family:Verdana, Arial, sans-serif;
+font-size:12px;
+line-height:16px;
+color:#575757;
+}
+
+p {
+padding:0 0 12px;
+}
+
+table p {
+padding:0;
+}
+
+hr {
+border:0;
+color:#CCC;
+height:1px;
+background-color:#CCC;
+}
+
+a {
+color:#767676;
+text-decoration:underline;
+}
+
+.subheading {
+font-weight:700;
+}
+
+.small {
+font-size:11px;
+font-family:arial, verdana;
+}
+
+.left {
+float:left;
+margin:5px 10px 5px 0px;
+}
+
+.right,.imagedpi {
+float:right;
+margin:5px 0 5px 10px;
+}
+
+h1 {
+font-size:20px;
+line-height:normal;
+font-family:Verdana, verdana, arial;
+font-weight:600;
+padding:0 0 25px;
+}
+
+h2 {
+font-size:120%;
+border-bottom-color:#CCC;
+border-bottom-style:dotted;
+border-bottom-width:1px;
+font-weight:700;
+font-family:Verdana, arial, sans-ser;
+margin:0 0 1em;
+padding:1em 0 .4em;
+}
+
+h2.portalHeading {
+    font-family: "Times New Roman",Times,serif;
+    font-size: 40px;
+    font-weight: normal;
+    letter-spacing: -1px;
+    line-height: 38px;
+    padding: 15px 0;
+    margin-bottom:0;
+    border:0;
+}
+
+h3 {
+    font-size:12px;
+    font-weight:700;
+    padding:5px 0 10px;
+}
+
+.h3_portal {
+font-size: 14px;
+border-bottom: 1px dotted #CCCCCC;
+font-family: "Verdana",arial,sans-serif;
+font-size: 120%;
+margin: 0 0 1em;
+padding: 1em 0 0.4em;
+width:445px;
+}
+
+h3.quick_links {
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  margin: 0;
+  padding: 9px 10px 7px;
+}
+
+h4 {
+    font-size:11px;
+    font-weight:700;
+    text-transform:uppercase;
+    padding:5px 0 10px;
+}
+
+.alphabetList {list-style-type:lower-alpha}
+
+
+#right_content {
+line-height:1.5em;
+float:left;
+width:680px;
+padding:20px;
+}
+
+#right_content p {
+line-height:1.5em;
+padding:0 0 0.833em;
+}
+
+#right_content .portalHeading {
+font-family:"Times New Roman",Times,serif;
+font-size:40px;
+font-weight:400;
+letter-spacing:-1px;
+line-height:38px;
+margin-bottom:0;
+border:0;
+padding:15px 0;
+}
+
+/*#right_content h1 {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 1.75em;
+    font-weight: normal;
+    line-height: 1.5em;    
+    margin-top: 1em;
+    margin-bottom:1em;
+}
+
+
+#right_content h2 {
+    border-bottom: 1px dotted #CCCCCC;
+    font-family: Verdana,arial,sans-serif;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 0 0 1em;
+    padding: 1em 0 0.2em;
+    line-height:1.5em;
+}*/
+#content {
+background:url(http://www.dpi.vic.gov.au/__data/assets/image/0011/74594/content_bkg.gif) repeat-y;
+width:950px;
+padding:0;
+}
+
+#right_content ul,#right_content ol {
+line-height:1.5em;
+margin:0;
+padding:0.1em 0 1em 2.5em;
+}
+
+#right_content ul li,#right_content ol li {
+line-height:1.5em;
+margin:0;
+padding:0 0 0.5em 0.25em;
+}
+
+#right_content ul ul,#right_content ul ol,#right_content ol ul,#right_content ol ol {
+padding-top:0.5em;
+padding-bottom:0;
+line-height:1.5em;
+}
+
+#right_content form fieldset ul {
+padding:0;
+}
+
+#right_content form fieldset ul.bullets {
+padding:0.1em 0 1em 2.5em;
+}
+
+/* 2 :-------- Banner ------------ */
+#banner {
+float:left;
+width:950px;
+height:110px;
+}
+
+#banner p {
+float:left;
+margin-top:38px;
+margin-left:20px;
+color:#fff;
+width:170px;
+}
+
+#banner h2 {
+float:left;
+color:#fff;
+font-size:25px;
+font-weight:400;
+font-family:verdana, Times New Roman, Times, serif;
+border:0;
+margin:35px 0 0 65px;
+padding:10px 0;
+clear:none;
+}
+
+/* 3 :-------- Page Tools ------------ */
+#page_tools {
+float:right;
+}
+
+#page_tools li {
+float:left;
+display:inline;
+list-style:none;
+margin:0 0 0 5px;
+padding:0;
+}
+
+#page_tools li#facebook,#page_tools li#twitter {
+padding-top:3px;
+}
+
+/* 4 :-------- Left Hand Navigation ------------ */
+#left_hand_navigation {
+float:left;
+width:230px;
+padding:20px 0;
+}
+
+#left_hand_navigation li {
+list-style:none;
+}
+
+#left_hand_navigation a {
+color:#000;
+text-decoration:none;
+}
+
+#left_hand_navigation a:hover {
+text-decoration:underline;
+}
+
+ul.left_menu li {
+border-bottom:1px solid #fff;
+margin:0;
+padding:0;
+}
+
+ul.left_menu li a {
+display:block;
+color:#000;
+padding:4px 0 5px 20px;
+}
+
+ul.left_menu li a:hover {
+background-color:#e6e6e6;
+color:#000;
+}
+
+#left_hand_navigation .left_menu a.currSection,li#level_1,a.level_1 {
+color:#FFF !important;
+}
+
+.level_1 a:hover {
+color:#fff;
+}
+
+/* 4.1 : -------- Second Level Navigation ------------*/
+#left_hand_navigation ul.left_menu li.second_level,#left_hand_navigation ul.left_menu li.third_level {
+background-color:#FCFCFC;
+border-bottom:1px solid #F6F6F6;
+font-size:11px;
+list-style:none outside none;
+width:229px;
+}
+
+#left_hand_navigation ul.left_menu li.second_level a {
+background-position:20px 7px;
+background-repeat:no-repeat;
+color:#333;
+display:block;
+line-height:14px;
+width:195px;
+padding:3px 4px 5px 30px;
+}
+
+a.level_2,a.level_3 {
+background: #eee url(http://www.dpi.vic.gov.au/designs/css/inside/inside.css/arrowExpand_pets.gif) no-repeat;
+color:#333 !important;
+border-bottom:none !important;
+}
+
+/* 4.2 : -------- Third Level Navigation ------------ */
+#left_hand_navigation ul.left_menu li.first_level ul li.second_level ul li.third_level a {
+background-color:#FCFCFC;
+color:#5A5A5A;
+display:block;
+line-height:14px;
+margin-left:20px;
+width:184px;
+padding:3px 4px 5px 20px;
+}
+
+/* 4.3 : -------- Fourth Level Navigation ------------ */
+#left_hand_navigation ul.left_menu li.fourth_level {
+list-style:none;
+background-color:#FCFCFC;
+font-size:11px;
+
+}
+
+#left_hand_navigation ul.left_menu li.first_level ul li.second_level ul li.third_level ul li.fourth_level a {
+color:#5a5a5a;
+display:block;
+width:174px;
+line-height:14px;
+margin-left:30px;
+padding:3px 4px 5px 20px;
+}
+
+/* 5 :-------- Portal ------------ */
+#right_content .h3_portal {
+border-bottom:1px dotted #CCC;
+font-family:"Verdana",arial,sans-serif;
+font-size:120%;
+width:445px;
+margin:0 0 1em;
+padding:1em 0 0.4em;
+}
+
+.portalBox {
+background-color:#F5F5F5;
+border-left:10px solid #F2E8CF;
+overflow:auto;
+width:670px;
+margin:30px 0 20px;
+padding:0;
+}
+
+.portalText {
+padding-left:10px;
+}
+
+.portalImage {
+float:right;
+background-color:#CCC;
+height:100%;
+width:230px;
+margin:0 0 0 10px;
+padding:0;
+}
+
+.introBox,.box {
+background-color:#F5F5F5;
+margin-bottom:20px;
+padding:10px;
+}
+
+.introBox img {
+float:right;
+margin-right:-10px;
+padding:0 0 10px 10px;
+}
+
+.tile {
+margin-bottom:7px;
+width:230px;
+}
+
+  .no_bullets,
+  .no_bullets li ul{
+      list-style-type:none;
+      margin-left:0 !important
+  }
+  
+  .no_bullets li ul {margin-left:3em !important;}
+  
+  
+
+/* 6 :-------- Quicklinks ------------ */
+.column {
+float:right;
+width:230px;
+border-bottom:10px solid #FFF;
+}
+
+#right_content .quick_links {
+margin:0;
+padding:0;
+}
+
+#right_content .quick_links_box {
+width:230px;
+padding-bottom:10px;
+margin:7px 0 10px;
+}
+
+#right_content .quick_links li {
+list-style:none;
+border-top:1px solid #fff;
+margin:0;
+padding:0;
+}
+
+#right_content .quick_links li a {
+color:#000;
+text-decoration:none;
+display:block;
+font-size:11px;
+width:190px;
+padding:4px 15px 4px 25px;
+}
+
+.quick_links_box img {
+display:none;
+}
+
+/*-- THUMB - FEATURED SECTION --*/
+.thumbBox img {
+width:85px;
+height:60px;
+float:left;
+background-color:#ccc;
+margin-bottom:10px;
+margin-right:10px;
+}
+
+.thumbTxt {
+position:relative;
+margin-left:95px;
+}
+
+.thumbTxt p {
+margin-bottom:0;
+padding-bottom:0;
+}
+
+.thumbBox .icon {
+display:none;
+}
+
+.thumbTxt .icon {
+display:block;
+width:13px;
+height:13px;
+margin:0;
+}
+
+.thumbBox {
+width:420px;
+margin-bottom:10px;
+min-height:60px;
+}
+
+/* 7 :-------- Featured Box ------------ */
+#right_content .featured {
+margin:0;
+padding:0;
+}
+
+#right_content .featured li {
+float:left;
+width:445px;
+list-style:none;
+margin:0;
+padding:0 0 10px;
+}
+
+.featured li img {
+float:left;
+padding-right:10px;
+}
+
+.featured li p {
+float:left;
+width:350px;
+font-weight:400 !important;
+color:#5A5A5A !important;
+}
+
+.media_release_thumb img {
+float:right;
+margin:0 0 5px 5px;
+}
+
+/* 8 :-------- Images ------------ */
+table.imageRight,table.imageRightClear {
+   float:right;
+   width:200px;
+   font-size:10px;
+   font-weight:bold;
+   font-style:italic;
+   border:none;
+   border-left:15px solid #ffffff;
+   line-height:12px;
+   clear:right;
+}
+
+table.imageLeft {
+   float:left;
+   width:200px;
+   font-size:10px;
+   font-weight:bold;
+   font-style:italic;
+   border-right:15px;
+   border-style:solid;
+   border-color:#ffffff;
+   line-height:12px;
+}
+
+.border {
+border:1px solid #666;
+}
+
+/*----- QUOTE BOX-----*/
+.quoteBox {
+width:230px;
+float:right;
+font-size:16px;
+font-style:italic;
+background-color:#f5f5f5;
+text-align:center;
+line-height:20px;
+color:#666;
+clear:right;
+font-family:Georgia, "Times New Roman", Times, serif;
+margin:10px 0 10px 10px;
+padding:10px;
+}
+
+.blockquote {
+font-size:16px;
+font-style:italic;
+line-height:20px;
+color:#666;
+font-weight:700;
+font-family:Georgia, "Times New Roman", Times, serif;
+padding-bottom:10px;
+margin:16px 40px;
+}
+
+/* 8 :-------- Table Styling ------------ */
+/*table.imageRight {
+float:right;
+width:200px;
+font-size:10px;
+font-weight:700;
+font-style:italic;
+border:1px solid #fff;
+border-left:15px;
+line-height:12px;
+}
+
+table.imageRightClear {
+float:right;
+width:200px;
+font-size:10px;
+font-weight:700;
+font-style:italic;
+border:1px solid #fff;
+border-left:15px;
+line-height:12px;
+clear:right;
+}*/
+
+.tableStyle, .tableStyle2 {
+border:2px solid #ccc;
+margin-bottom:10px;
+background-color:#fff;
+font-family:Arial, Helvetica, sans-serif;
+font-size:12px;
+border-collapse:collapse;
+border-spacing:0;
+}
+
+.tableStyle caption, .tableStyle2 caption, .caption {
+font-weight:700;
+font-size:12px;
+text-align:left;
+font-family:Arial, Helvetica, sans-serif;
+padding:5px 0 10px;
+color:#333
+}
+
+.tableStyle tfoot tr td,.subheading, 
+.tableStyle2 tfoot tr td {
+background-color:#DBDBDB !important;
+color:#000 !important;
+border-top:1px solid #fff;
+font-style:italic;
+}
+
+.tableStyle td,
+.tableStyle2 td {
+border-right:1px solid #e9e9e9;
+border-bottom:1px solid #f5f5f5;
+vertical-align:top;
+margin:0;
+padding:5px;
+}
+
+.tableStyle thead th,
+.tableStyle2 thead th {
+font:bold 12px Arial, Helvetica, sans-serif;
+color:#fff;
+border:1px solid #ccc;
+text-align:left;
+background:#666;
+padding:5px;
+}
+
+.tableStyle .tr1,
+.tableStyle2 .tr1{
+background-color:#f5f5f5;
+}
+
+.tableStyle tbody th,
+.tableStyle2 tbody th {
+background-color:#e9e9e9;
+border:1px solid #fff;
+color:#444;
+text-align:left;
+padding:5px;
+}
+
+.tableCaption,.imageCaption {
+font-weight:700;
+font-style:italic;
+margin-top:5px;
+}
+
+table.tableStyle ul,
+table.tableStyle2 ul {
+padding-left:0;
+margin:5px 20px;
+}
+
+.colourRow2 {
+background-color:#ccc;
+border:1px solid #E9E9E9;
+}
+
+/* 9 :-------- Webmail forms ------------ */
+.o-form-row {
+padding:2px;
+}
+
+.o-form-row label {
+width:120px;
+display:inline-block;
+}
+
+.form-row-radio-field .checkbox {
+width:150px;
+float:left;
+padding:2px 0;
+}
+
+a:hover,#left_hand_navigation ul.left_menu li.first_level ul li.second_level ul li.third_level a:hover,#left_hand_navigation ul.left_menu li.first_level ul li.second_level ul li.third_level ul li.fourth_level a:hover {
+color:#000;
+}
+
+#level_2,#level_3 {
+border-bottom:none !important;
+}
+
+.quick_links_heading,#right_content h3.quick_links {
+color:#fff;
+font-size:12px;
+font-weight:700;
+margin:0;
+padding:9px 10px 7px;
+}
+
+/* 10 :-------- On-page Stuff ------------ */
+/* right column */
+.rightColumn {
+background-color:#EFF3E8;
+width:230px;
+float:right;
+padding:10px;
+font-size:11px;
+border-bottom:10px solid #fff;
+border-left:10px solid #fff;
+    z-index: 100;
+}
+
+.rightColumn p, .rightColumn ul {padding-bottom:5px}
+.rightColumn ul li {padding-bottom:2px}
+    
+.rightColumn ol {margin-left:20px}
+
+
+
+.figure {
+    background-color:#DEE6DD;
+    padding:10px;
+    margin-bottom:10px;
+}
+
+.figure img {text-align:center}
+
+.clear {clear:both}

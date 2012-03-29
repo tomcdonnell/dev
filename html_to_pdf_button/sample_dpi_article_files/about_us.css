@@ -1,0 +1,121 @@
+/*
+  Running MySource Matrix
+  Developed by Squiz - http://www.squiz.net
+  MySource, MySource Matrix and Squiz.net are registered Trademarks of Squiz Pty Ltd
+  Page generated: 08 January 2012 21:30:46
+*/
+
+
+/* TABLE OF CONTENTS
+
+    1: - Global Styles
+    
+        1.1: - General
+        1.2: - Left Hand Menu
+        1.3: - Overrides
+        1.4: - Lists
+        
+
+
+ 1 :-------- Global Styles ------------ 
+ 1.1 : -------- General ------------ */
+
+
+#background_container {
+background:#f1f1f1 url(http://www.dpi.vic.gov.au/__data/assets/image/0006/132000/background_about_us.jpg) no-repeat center top;
+max-width:1500px;
+height:904px;
+margin:0 auto;
+}
+
+#banner {
+background:url(http://www.dpi.vic.gov.au/__data/assets/image/0011/58097/banner_about_us.jpg) no-repeat;
+}
+
+#navigation {
+border-bottom:5px solid #BB8704;
+}
+
+#navigation li a.current {
+background:url(http://www.dpi.vic.gov.au/__data/assets/image/0018/121158/about_us_arrow_top.gif) no-repeat center bottom;
+color:#BB8704;
+}
+
+/* 1.3 : -------- Overrides ------------ */
+h1,h2,h2.portalHeading,h3,.h3_portal,h4 {
+color:#bb8704;
+}
+
+.quick_links_box {
+background-color:#F8F3E5;
+}
+
+.quick_links li a {
+background:url(http://www.dpi.vic.gov.au/__data/assets/image/0011/121223/bullet_about_us.gif) no-repeat left top;
+color:#000;
+text-decoration:none;
+display:block;
+font-size:11px;
+width:190px;
+padding:4px 15px 4px 25px;
+}
+
+.quick_links li a:hover {
+background-color:#F2E8CF;
+}
+
+.portalBox {
+border-left:10px solid #F2E8CF;
+}
+
+.second_level {
+border-right:1px solid #F2E8CF;
+}
+
+#left_hand_navigation ul.left_menu li.first_level ul li.second_level a {
+background-image:url(http://www.dpi.vic.gov.au/__data/assets/image/0013/122602/arrow_about_us.gif);
+}
+
+#left_hand_navigation ul.left_menu li.first_level ul li.second_level a.current,#left_hand_navigation ul.left_menu li.first_level ul li.second_level ul li.third_level a.current,#left_hand_navigation ul.left_menu li.first_level ul li.second_level ul li.third_level ul li.fourth_level a.current {
+background-color:#F8F3E5;
+color:#946500;
+}
+
+#left_hand_navigation ul.left_menu li.first_level ul li.second_level a:hover,#left_hand_navigation ul.left_menu li.first_level ul li.second_level ul li.third_level a:hover,#left_hand_navigation ul.left_menu li.first_level ul li.second_level ul li.third_level ul li.fourth_level a:hover {
+background-color:#F8F3E5 !important;
+color:#000;
+}
+
+#left_hand_navigation ul.left_menu li.first_level ul li.second_level ul li.third_level a {
+background:url(http://www.dpi.vic.gov.au/__data/assets/image/0013/122602/arrow_about_us.gif) no-repeat 10px 7px;
+border-left:1px dashed #F2E8CF;
+}
+
+a.level_2,a.level_3 {
+background:url(http://www.dpi.vic.gov.au/__data/assets/image/0014/122603/arrowExpand_about_us.gif) no-repeat !important;
+}
+
+a.level_2:hover,a.level_3:hover {
+background-color:#F8F3E5 !important;
+}
+
+a.level_2 {
+background-position:18px 9px !important;
+}
+
+a.level_3 {
+background-position:6px 9px !important;
+}
+
+#left_hand_navigation ul.left_menu li.fourth_level {
+background:url(http://www.dpi.vic.gov.au/__data/assets/image/0014/131522/nav_line_corporate.gif) repeat-y 0 0;
+}
+
+#left_hand_navigation ul.left_menu li.first_level ul li.second_level ul li.third_level ul li.fourth_level a {
+background:url(http://www.dpi.vic.gov.au/__data/assets/image/0012/131520/nav_hyphen_corporate.gif) no-repeat 10px 7px !important;
+border-left:1px dashed #F2E8CF;
+}
+
+h3.quick_links,#left_hand_navigation .left_menu a.currSection,#left_hand_navigation .left_menu li#level_1 a.level_1,#left_hand_navigation .left_menu li#level_1 a.level_1:hover {
+background-color:#BB8704;
+}
