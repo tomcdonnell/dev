@@ -7,13 +7,13 @@ try
    $pdoEx            = new PdoExtended('mysql:host=localhost;dbname=test', 'root', '');
    $toyDbInitializer = new ToyDatabaseInitializer($pdoEx);
 
-   $outputFile = fopen('output_varying_n_countries.csv', 'w');
+   $outputFile = fopen('output_varying_n_persons_60.csv', 'w');
    fwrite($outputFile, '"n_persons","n_countries","seconds_traditional","seconds_fast"' . "\n");
 
-   $nPersons = 1000;
-   $trialNo  =    0;
+   $nCountries = 60;
+   $trialNo    =  0;
 
-   for ($nCountries = 1; $nCountries < 50; ++$nCountries))
+   for ($nPersons = 1; $nPersons < 100000; $nPersons = ceil($nPersons * 1.05))
    {
       ++$trialNo;
       echo "Trial $trialNo (nPersons: $nPersons, nCountries: $nCountries)\n";

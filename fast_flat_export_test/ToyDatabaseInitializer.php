@@ -138,7 +138,7 @@ class ToyDatabaseInitializer
    {
       echo ' * Getting idPersons...';
       $idPersons       = $this->_pdoEx->queryColumn("SELECT id FROM person LIMIT $nPersons");
-      $idPersonsChunks = array_chunk($idPersons, 5000);
+      $idPersonsChunks = array_chunk($idPersons, 1000);
       echo "done.\n   Got ", count($idPersons), " idPersons.\n";
 
       echo ' * Filling table link_person_country...';

@@ -64,3 +64,18 @@ Once the number of people and the number of countries to be used was decided, th
 <php code>
 
 
+
+
+
+SQLSTATE[HY000]: General error: 1116 Too many tables; MySQL can only use 61 tables in a join
+
+
+
+
+Flat Export - Fast
+ * Getting countries list for headings row...done.
+ * Building SQL query...done.
+ * Getting rows...PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 74 bytes) in /opt/lampp/htdocs/lib/tom/php/database/mysql_pdo/PdoExtended.php on line 58
+
+Fatal error: Allowed memory size of 134217728 bytes exhausted (tried to allocate 74 bytes) in /opt/lampp/htdocs/lib/tom/php/database/mysql_pdo/PdoExtended.php on line 58
+
